@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to our <%= title %> page</p>
+    <form action="/search" method="POST">
+      <input type="text" name="query">
+      <input type="submit" value="Submit">
+    </form>
+    <div class="result">
+      <% if (queried) { %>
+        <table>
+          <% table.forEach(row => { %>
+            <tr>
+              <% row.forEach(col => { %>
+                <td><%= col %></td>
+              <% }) %>
+            </tr>
+          <% }) %>
+        </table>
+      <% } else { %>
+        <p><strong><%= errMessage %></strong></p>
+      <% } %>
+    </div>
+  </body>
+</html>
+
